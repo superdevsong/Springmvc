@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 아파치에서 가져온 내용임  -->
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       <!-- 아래에 내용처럼 정의하고 layout.jsp에서 아래에 내용중에 name가져와서 씀  -->
+<tiles-definitions>
+<definition name="root.*" template="/WEB-INF/view/inc/layout.jsp"> 
+    <put-attribute name="title" value="공지사항 " />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/{1}.jsp" /> <!-- 첫번째 와일드카드 내용 가져옴 여러개면 그 숫자에 맞게 쓰면됨 -->
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+  <definition name="notice.*" template="/WEB-INF/view/customer/inc/layout.jsp"> <!--  -->
+    <put-attribute name="title" value="공지사항 " />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="visual" value="/WEB-INF/view/customer/inc/visual.jsp" />
+    <put-attribute name="aside" value="/WEB-INF/view/customer/inc/aside.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/customer/notice/{1}.jsp" /> <!-- 첫번째 와일드카드 내용 가져옴 여러개면 그 숫자에 맞게 쓰면됨 -->
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition>
+ <!-- <definition name="notice.detail" template="/WEB-INF/view/customer/inc/layout.jsp"> 원래는 이렇게 쓰는데 수천개면 큰일나니 그냥 위에처럼 
+    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="header" value="/WEB-INF/view/inc/header.jsp" />
+    <put-attribute name="visual" value="/WEB-INF/view/customer/inc/visual.jsp" />
+    <put-attribute name="aside" value="/WEB-INF/view/customer/inc/aside.jsp" />
+    <put-attribute name="body" value="/WEB-INF/view/customer/notice/detail.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/view/inc/footer.jsp" />
+  </definition> -->
+</tiles-definitions>

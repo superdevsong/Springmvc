@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+        
+        <!-- dispatcher 서블릿 기본 설정 xml -->
+        
+<!--     <context:annotation-config/>
+		
+ -->
+ 		<context:component-scan base-package="com.song.web.controller" />
+ <!-- 	<bean id="/index" class="com.song.web.controller.IndexController" /> /index 라는 url이 넘어오면 IndexController 로 넘김 아래 두개도 사용법 같음
+ 		<bean id="/notice/list"
+		class="com.song.web.controller.notice.ListController">
+		<property name="noticeService" ref="noticeService"></property>
+
+	</bean>
+	<bean id="/notice/detail"
+		class="com.song.web.controller.notice.DetailController" />  나머지 사용법도 같고 di를 추가한것 주석처리한 이유는 지금은 어노테이션으로 해결했기때문 다음에는 깃헙에 올리고 지울것이다.
+ -->
+	<bean
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" /><!-- 우선순위 적용 이거 먼저 -->
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles.xml" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver
+    ">
+		<property name="prefix" value="/WEB-INF/view/"></property>
+		<property name="suffix" value=".jsp"></property>
+		<property name="order" value="2" /><!-- 우선순위 적용 위에꺼 먼저 -->
+
+	</bean>
+	<mvc:resources location="/static/" mapping="/**"></mvc:resources> <!-- 리소스 요청시 /패턴으로 오면 /static/으로 넘김 -->
+	<mvc:annotation-driven/>
+	
+  
+
+</beans>
