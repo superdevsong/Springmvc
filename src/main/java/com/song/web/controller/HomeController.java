@@ -1,22 +1,36 @@
 package com.song.web.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller 
 public class HomeController {
 	//index로 요청왔을때 매핑 이렇게해도 xml에 작성한내용과 효과가같음 그래서 같은부분 주석처리했고 담에는 정리를 위해삭제할거
 	@RequestMapping("/index")
-	public String aaaa() {
-		return "root.index";
+	@ResponseBody
+	public String index() {
 		
+		return "fffff";//스프링 기능 이용해서 문자열 출력 
 	}
+	
+//	@RequestMapping("/index")
+//	public String index() {
+//		
+//		return "root.index"; 타일즈 xml 매
+//	}
 	//예시로 만든것 근데 이렇게해도 매핑한다고 하긴하는데 파일이없어서 오류
-	@RequestMapping("/help")
-	public String bbbb() {
-		return "root.help";
-		
-	}
+//	@RequestMapping("/index")
+//	public void bbbb(HttpServletResponse response) throws IOException {
+//		
+//		PrintWriter out = response.getWriter();
+//		out.println("Hello"); 서블릿을 이용해서 문자 데이터 출력 
+//	}
 
 //	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		System.out.println("fdfdfd");
